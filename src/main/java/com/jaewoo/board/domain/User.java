@@ -28,7 +28,6 @@ public class User {
 	
 	@Builder
 	public User(String username, String password, String nickname, LocalDateTime createDate, LocalDateTime updateDate) {
-		super();
 		this.username = username;
 		this.password = password;
 		this.nickname = nickname;
