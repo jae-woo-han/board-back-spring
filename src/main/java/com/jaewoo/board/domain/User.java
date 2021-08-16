@@ -15,6 +15,7 @@ public class User {
  * username(아이디), 
  * password(비밀번호), 
  * nickname(사이트에서 사용할 닉네임)
+ * date정보(작성, 수정)
  */
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "user_id")
