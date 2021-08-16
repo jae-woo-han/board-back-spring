@@ -2,9 +2,12 @@ package com.jaewoo.board.domain;
 
 import java.time.LocalDateTime;
 import javax.persistence.Column;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import lombok.Builder;
 
@@ -14,7 +17,7 @@ public class Post {
  * id(인덱스),
  * title,
  * content(내용),
- * user(작성한 유저),
+ * user(작성한 유저, user_id),
  * date정보(작성, 수정)
  */
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,9 +25,14 @@ public class Post {
 	private Long id;
 	private String title;
 	private String content;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id")
 	private User user;
+	
 	private LocalDateTime createDate;
 	private LocalDateTime updateDate;
+	
 	
 	@Builder
 	public Post(String title, String content, User user, LocalDateTime createDate, LocalDateTime updateDate) {

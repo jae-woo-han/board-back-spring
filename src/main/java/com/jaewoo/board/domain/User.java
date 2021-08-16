@@ -3,12 +3,19 @@ package com.jaewoo.board.domain;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import lombok.AccessLevel;
 import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@Entity
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
 public class User {
 /* 게시판 사용할 유저 도메인
  * id(인덱스), 
