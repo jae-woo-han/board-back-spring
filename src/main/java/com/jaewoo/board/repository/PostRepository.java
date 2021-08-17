@@ -1,5 +1,9 @@
 package com.jaewoo.board.repository;
 
-public interface PostRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.jaewoo.board.domain.User;
+
+public interface PostRepository extends JpaRepository<User, Long>{
 
 }
