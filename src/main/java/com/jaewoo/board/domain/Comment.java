@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-public class Content {
+public class Comment {
 /*
  * 댓글
  * id(인덱스),
@@ -45,7 +45,7 @@ public class Content {
 	
 	
 	@Builder
-	public Content(String content, Post post, User user, LocalDateTime createDate, LocalDateTime updateDate) {
+	public Comment(String content, Post post, User user, LocalDateTime createDate, LocalDateTime updateDate) {
 		this.content = content;
 		this.post = post;
 		this.user = user;
