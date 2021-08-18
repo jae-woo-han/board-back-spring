@@ -21,25 +21,24 @@ public class JwtTokenProvider implements InitializingBean {
 	
 	private final Logger logger = org.slf4j.LoggerFactory.getLogger(JwtTokenProvider.class);
 	private String secretKey;
-	private long validityInMilliseconds;
+	private long tokenValidityInMilliseconds;
 	private Key key;
 	
-	public JwtTokenProvider(String secretKey, long validityInMilliseconds) {
+	public JwtTokenProvider(String secretKey, long tokenValidityInMilliseconds) {
 		this.secretKey = secretKey;
-		this.validityInMilliseconds = validityInMilliseconds;
+		this.tokenValidityInMilliseconds = tokenValidityInMilliseconds;
 	}
 	
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		byte[] secretKeyBytes =secretKey.getBytes(StandardCharsets.UTF_8);
 		this.key = Keys.hmacShaKeyFor(secretKeyBytes);
-		
 	}
 	public String createToken(String subject) {
 		Claims claims = Jwts.claims().setSubject(subject);
 		
 		long now = (new Date()).getTime();
-		Date expirationTime = new Date(now+ this.validityInMilliseconds);
+		Date expirationTime = new Date(now+ this.tokenValidityInMilliseconds);
 		
 		return Jwts.builder()
 				.setClaims(claims)
