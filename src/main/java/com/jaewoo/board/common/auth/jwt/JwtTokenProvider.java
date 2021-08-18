@@ -6,7 +6,10 @@ import java.time.LocalDateTime;
 import java.util.Base64;
 import java.util.Date;
 
+import org.slf4j.Logger;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
+
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -14,17 +17,24 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 
 @Component
-public class JwtTokenProvider {
+public class JwtTokenProvider implements InitializingBean {
+	
+	private final Logger logger = org.slf4j.LoggerFactory.getLogger(JwtTokenProvider.class);
 	private String secretKey;
 	private long validityInMilliseconds;
 	private Key key;
 	
 	public JwtTokenProvider(String secretKey, long validityInMilliseconds) {
-		this.secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes(StandardCharsets.UTF_8));
+		this.secretKey = secretKey;
 		this.validityInMilliseconds = validityInMilliseconds;
-		this.key = Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8));
 	}
 	
+	@Override
+	public void afterPropertiesSet() throws Exception {
+		byte[] secretKeyBytes =secretKey.getBytes(StandardCharsets.UTF_8);
+		this.key = Keys.hmacShaKeyFor(secretKeyBytes);
+		
+	}
 	public String createToken(String subject) {
 		Claims claims = Jwts.claims().setSubject(subject);
 		
@@ -37,6 +47,7 @@ public class JwtTokenProvider {
 				.signWith(key, SignatureAlgorithm.HS256)
 				.compact();
 	}
+
 	
 	
 	
