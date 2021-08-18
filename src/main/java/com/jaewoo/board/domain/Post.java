@@ -49,4 +49,20 @@ public class Post {
 		this.createDate = createDate;
 		this.updateDate = updateDate;
 	}
+	
+	//수정 관련 메서드
+	//제목 변경
+	public void changeTitle(String title) {
+		this.title = title;
+		setUpdateTime();
+	}
+	//내용 변경
+	public void changeContent(String content) {
+		this.content = content;
+		setUpdateTime();
+	}
+	//수정일 변경
+	private void setUpdateTime() {
+		this.updateDate = LocalDateTime.now();
+	}
 }
