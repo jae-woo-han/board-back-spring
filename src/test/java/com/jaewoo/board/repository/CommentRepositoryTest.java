@@ -61,7 +61,16 @@ class CommentRepositoryTest {
 	}
 	@Test
 	void 댓글수정() {
-		
+		Comment comment = Comment.builder()
+				.content("댓댓구")
+				.post(post)
+				.user(user)
+				.createDate(LocalDateTime.now())
+				.build();
+		Comment savedComment = commentRepository.save(comment);
+		savedComment.changeContent("댓댓구리");
+		commentRepository.save(savedComment);
+		assertTrue(savedComment.getContent().equals("댓댓구리"));
 	}
 
 }
