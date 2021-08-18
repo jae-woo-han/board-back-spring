@@ -52,4 +52,15 @@ public class Comment {
 		this.createDate = createDate;
 		this.updateDate = updateDate;
 	}
+	
+	//수정 관련 메서드
+	//내용변경
+	public void changeContent(String content) {
+		this.content = content;
+		setUpdateTime();
+	}
+	//수정일 갱신
+	private void setUpdateTime() {
+		this.updateDate = LocalDateTime.now();
+	}
 }
