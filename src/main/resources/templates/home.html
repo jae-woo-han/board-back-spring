@@ -7,21 +7,28 @@
 <body>
 	<header th:replace="fragments/bodyHeader :: bodyHeader" />
 	<main class="container">
-		<div class="jumbotron">
-			<h1>게시판</h1>
-			<p class="lead">회원</p>
-			<p>
-				<a class="btn btn-lg btn-secondary" href="/users/new">회원 가입</a> <a
-					class="btn btn-lg btn-secondary" href="/users">회원 목록</a>
-			</p>
-			<p class="lead">게시판</p>
-			<p>
-				<a class="btn btn-lg btn-dark" href="/posts/new">상품 등록</a> <a
-					class="btn btn-lg btn-dark" href="/posts">상품 목록</a>
-			</p>
-		</div>
-		<div th:replace="fragments/footer :: footer" />
+		<article>
+			<table>
+				<thead>
+					<tr>
+						<th> # </th>
+						<th> 제목 </th>
+						<th> 작성자 </th>
+						<th> 작성일 </th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="post : ${posts}" >
+						<td th:text="${post.id}"></td>
+						<td th:text="${post.title}"></td>
+						<td th:text="${post.writer}"></td>
+						<td th:text="${post.postDate}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</article>
 	</main>
+	<footer th:replace="fragments/footer :: footer" />
 	<!-- /container -->
 </body>
 </html>
