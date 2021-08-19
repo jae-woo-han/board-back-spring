@@ -5,8 +5,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<div class="container">
-		<div th:replace="fragments/bodyHeader :: bodyHeader" />
+	<header th:replace="fragments/bodyHeader :: bodyHeader" />
+	<main class="container">
 		<div class="jumbotron">
 			<h1>게시판</h1>
 			<p class="lead">회원</p>
@@ -21,7 +21,7 @@
 			</p>
 		</div>
 		<div th:replace="fragments/footer :: footer" />
-	</div>
+	</main>
 	<!-- /container -->
 </body>
 </html>
