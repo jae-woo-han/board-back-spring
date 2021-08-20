@@ -34,5 +34,11 @@ class UserRepositoryTest {
 		
 		assertTrue(findUser.getNickname().equals("째우"));
 	}
+	@Test
+	void 이름으로조회() {
+		User findUser = userRepository.findOneByUsername("한재우").get();
+		
+		assertTrue(findUser.getNickname().equals("째우"));
+	}
 
 }
