@@ -1,14 +1,19 @@
 body, body>* {
 	margin: 0;
 	padding: 0;
+	background-color: hsl(200, 60%, 90%);
 }
 header{
-	
+	background-color: hsl(200, 60%, 70%);
 }
 main{
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	height: 85vh;
+}
+main>*{
+	height: 100%;
 }
 footer{
 	display: flex;
@@ -17,4 +22,12 @@ footer{
 nav{
 	display: flex;
 	width: 100%;
+}
+article{
+	width: 45vw;
+	background-color: hsl(100, 50%, 50%);
+}
+aside{
+	width: 15vw;
+	background-color: hsl(200, 50%, 50%);
 }
