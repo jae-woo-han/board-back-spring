@@ -1,8 +1,6 @@
 package com.jaewoo.board.controller;
 
-import javax.validation.Valid;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +28,7 @@ public class UserController {
 	@PostMapping("/signup")
 	public String signup(
 			@ModelAttribute("form") SignupFormDto form){
-		User user = authService.signup(
+		authService.signup(
 				User.builder()
 				.username(form.getUsername())
 				.password(form.getPassword())
