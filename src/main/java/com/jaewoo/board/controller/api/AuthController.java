@@ -1,4 +1,4 @@
-package com.jaewoo.board.controller;
+package com.jaewoo.board.controller.api;
 
 import javax.validation.Valid;
 
