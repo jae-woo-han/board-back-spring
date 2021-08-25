@@ -26,5 +26,5 @@ public class AuthController {
 		return ResponseEntity.ok(authService.signup(User.builder().username(signupRequest.getUsername())
 				.password(signupRequest.getPassword()).nickname(signupRequest.getNickname()).build()));
 	}
-
+ 
 }

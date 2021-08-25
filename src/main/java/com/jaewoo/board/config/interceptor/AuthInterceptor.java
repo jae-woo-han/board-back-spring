@@ -32,8 +32,8 @@ public class AuthInterceptor implements HandlerInterceptor {
 		if(!jwtTokenProvider.validateToken(jwtCookie)) {
 			throw new IllegalArgumentException("유효하지 않은 토큰");
 		}
-		String name = jwtTokenProvider.getSubject(jwtCookie);
-		request.setAttribute("name", name);
+		String username = jwtTokenProvider.getSubject(jwtCookie);
+		request.setAttribute("username", username);
 		return true;
 	}
 }

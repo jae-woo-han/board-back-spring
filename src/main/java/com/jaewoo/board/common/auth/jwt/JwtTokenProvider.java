@@ -16,12 +16,15 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 
 @Component
 public class JwtTokenProvider implements InitializingBean {
 	
 	private final Logger logger = org.slf4j.LoggerFactory.getLogger(JwtTokenProvider.class);
+	
+	private static final String AUTHORITIES_KEY = "auth";
 	private String secretKey;
 	private long tokenValidityInMilliseconds;
 	private Key key;
@@ -31,12 +34,12 @@ public class JwtTokenProvider implements InitializingBean {
 			@Value("${jwt.token-validity-in-seconds}") long tokenValidityInMilliseconds
 			) {
 		this.secretKey = secretKey;
-		this.tokenValidityInMilliseconds = tokenValidityInMilliseconds;
+		this.tokenValidityInMilliseconds = tokenValidityInMilliseconds*1000;
 	}
 	
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		byte[] secretKeyBytes =secretKey.getBytes(StandardCharsets.UTF_8);
+		byte[] secretKeyBytes = Decoders.BASE64.decode(secretKey);
 		this.key = Keys.hmacShaKeyFor(secretKeyBytes);
 	}
 	
@@ -47,9 +50,10 @@ public class JwtTokenProvider implements InitializingBean {
 		Date expirationTime = new Date(now+ this.tokenValidityInMilliseconds);
 		
 		return Jwts.builder()
+				.setSubject(subject)
 				.setClaims(claims)
 				.setExpiration(expirationTime)
-				.signWith(key, SignatureAlgorithm.HS256)
+				.signWith(key, SignatureAlgorithm.HS512)
 				.compact();
 	}
 
