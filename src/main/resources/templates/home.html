@@ -1,9 +1,11 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head th:replace="fragments/header :: header">
-<title>Hello</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Hello</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
+
 <body>
 	<header th:replace="fragments/bodyHeader :: bodyHeader" />
 	<main class="container">
@@ -18,9 +20,10 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="post : ${posts.content}" >
+					<tr th:each="post : ${posts.content}">
 						<td th:text="${post.id}"></td>
-						<td><a th:text="${post.title}" th:href="@{/posts/{id} (id=${post.id})}"></a></td>
+						<td><a class="anchor_not_underline" th:text="${post.title}"
+								th:href="@{/posts/{id} (id=${post.id})}"></a></td>
 						<td th:text="${post.writer}"></td>
 						<td th:text="${post.postDate}"></td>
 					</tr>
@@ -38,8 +41,8 @@
 	<footer th:replace="fragments/footer :: footer" />
 	
 	<script>
-	
-		
+
+
 	</script>
 </body>
 </html>

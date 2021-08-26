@@ -1,6 +1,8 @@
 .anchor_not_underline{
 	text-decoration: none;
+	color: black;
 }
 .anchor_not_underline:hover{
-	text-decoration: black;
+	text-decoration: underline;
+	color: black;
 }
