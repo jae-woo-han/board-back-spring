@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.jaewoo.board.domain.Post;
+import com.jaewoo.board.dto.PostPageResponse;
 import com.jaewoo.board.repository.PostRepository;
 
 @Controller
@@ -21,7 +22,15 @@ public class HomeController {
 	public String home(Model model) {
 		PageRequest pageRequest = PageRequest.of(0, 20);
 		Page<Post> posts = postRepository.findAll(pageRequest);
-		model.addAttribute("posts", posts);
+		Page<PostPageResponse> postPage = posts.map(m -> {
+			PostPageResponse res = new PostPageResponse();
+			res.setId(m.getId());
+			res.setTitle(m.getTitle());
+			res.setPostDate(m.getCreateDate());
+			res.setWriter(m.getUser().getNickname());
+			return res;
+		});
+		model.addAttribute("posts", postPage);
 		
 		return "/home.html";
 	}
