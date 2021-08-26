@@ -31,3 +31,20 @@ aside{
 	width: 15vw;
 	background-color: hsl(200, 50%, 50%);
 }
+table{
+	width:100%;
+}
+.td_seq{
+	text-align: center;
+}
+.td_title{
+	width:70%;
+}
+.td_writer{
+	width:15%;
+	text-overflow: ellipsis;
+	text-align: center;
+}
+.td_date{
+	text-align: center;
+}

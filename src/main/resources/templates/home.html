@@ -13,24 +13,26 @@
 			<table>
 				<thead>
 					<tr>
-						<th> # </th>
-						<th> 제목 </th>
-						<th> 작성자 </th>
-						<th> 작성일 </th>
+						<th class="td_seq"> # </th>
+						<th class="td_title"> 제목 </th>
+						<th class="td_writer"> 작성자 </th>
+						<th class="td_date"> 작성일 </th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:each="post : ${posts.content}">
-						<td th:text="${post.id}"></td>
-						<td><a class="anchor_not_underline" th:text="${post.title}"
+						<td class="td_seq" th:text="${post.id}"></td>
+						<td class="td_title"><a class="not_underline" th:text="${post.title}"
 								th:href="@{/posts/{id} (id=${post.id})}"></a></td>
-						<td th:text="${post.writer}"></td>
-						<td th:text="${post.postDate}"></td>
+						<td class="td_writer" th:text="${post.writer}"></td>
+						<td class="td_date" th:text="${post.postDate}"></td>
 					</tr>
 				</tbody>
 			</table>
-			<div th:each="page : ${#numbers.sequence(0,{posts.totalPages-1}) }">
-				<a th:href="@{/?page={page} (page=${page})}" th:text="${page}"></a>
+			<div class="page_list">
+				<div class="page_number" th:each="page : ${#numbers.sequence(0,{posts.totalPages-1}) }">
+					<a class="not_underline" th:href="@{/?page={page} (page=${page})}" th:text="${page}"></a>
+				</div>
 			</div>
 			<div>
 			<a class="button" href="/posts/new">등록</a>

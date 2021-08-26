@@ -1,8 +1,16 @@
-.anchor_not_underline{
+.not_underline{
 	text-decoration: none;
 	color: black;
 }
-.anchor_not_underline:hover{
+.not_underline:hover{
 	text-decoration: underline;
 	color: black;
+}
+
+.page_list{
+	display: flex;
+	justify-content: center;
+}
+.page_number{
+	padding: 0 6px;
 }
