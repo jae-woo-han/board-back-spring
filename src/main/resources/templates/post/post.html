@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/header :: header">
+	<title>Hello</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<header th:replace="fragments/bodyHeader :: bodyHeader" />
+	<main class="container">
+		<article>
+			<div th:object="${post}">
+				<div class="form-group">
+					<span th:text="*{title}" >
+				</div>
+				<div class="form-group">
+					<span th:text="*{content}" >
+				</div>
+				<table>
+					<tbody>
+						<tr th:each="comment : *{commentPage}">
+							<td th:text="${comment.id}"></td>
+							<td><a th:text="${comment.content}"></a></td>
+							<td th:text="${comment.writer}"></td>
+							<td th:text="${comment.postDate}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+
+		</article>
+		<aside th:replace="fragments/aside :: aside" />
+	</main>
+	<footer th:replace="fragments/footer :: footer" />
+
+	<script>
+
+
+	</script>
+</body>
+
+</html>
