@@ -20,6 +20,10 @@ public class AuthInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		Cookie[] cookies = request.getCookies();
+		if(cookies == null) {
+			response.sendRedirect("/login");
+			return false;
+		}
 		String jwtCookie = "";
 		for (Cookie cookie : cookies) {
 			if(cookie.getName().equals("Authorization")) {

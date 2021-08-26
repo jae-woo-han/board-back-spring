@@ -65,6 +65,6 @@ public class UserController {
 		responseDto.setUsername(user.getUsername());
 		responseDto.setNickname(user.getNickname());
 		model.addAttribute("user", responseDto);
-		return "/home.html";
+		return "redirect:/";
 	}
 }
