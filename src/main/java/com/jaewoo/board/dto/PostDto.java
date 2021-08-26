@@ -17,5 +17,5 @@ public class PostDto {
 	String content;
 	String writer;
 	LocalDateTime postDate;
-	Page<CommentDto> commentDtoPage;
+	Page<CommentDto> commentPage;
 }

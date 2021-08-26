@@ -1,5 +1,7 @@
 package com.jaewoo.board.dto;
 
+import java.time.LocalDateTime;
+
 import lombok.Data;
 
 /*
@@ -11,5 +13,5 @@ public class CommentDto {
 	Long id;
 	String content;
 	String writer;
-	String commentDate;
+	LocalDateTime commentDate;
 }
