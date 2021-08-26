@@ -6,6 +6,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.jaewoo.board.config.interceptor.AuthInterceptor;
+import com.jaewoo.board.config.interceptor.UserLoginInterceptor;
 
 import lombok.RequiredArgsConstructor;
 
@@ -14,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 public class WebConfig implements WebMvcConfigurer {
 
 	private final AuthInterceptor authInterceptor;
+	private final UserLoginInterceptor userLoginInterceptor;
 	
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
@@ -22,6 +24,7 @@ public class WebConfig implements WebMvcConfigurer {
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(authInterceptor).addPathPatterns("/posts/**");
+		registry.addInterceptor(authInterceptor).addPathPatterns("/");
+		registry.addInterceptor(userLoginInterceptor).addPathPatterns("/posts/**");
 	}
 }

@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor
-public class AuthInterceptor implements HandlerInterceptor {
+public class UserLoginInterceptor implements HandlerInterceptor{
 	private final JwtTokenProvider jwtTokenProvider;
 	
 	@Override
@@ -21,7 +21,8 @@ public class AuthInterceptor implements HandlerInterceptor {
 			throws Exception {
 		Cookie[] cookies = request.getCookies();
 		if(cookies == null) {
-			return true;
+			response.sendRedirect("/login");
+			return false;
 		}
 		String jwtCookie = "";
 		for (Cookie cookie : cookies) {
@@ -30,7 +31,8 @@ public class AuthInterceptor implements HandlerInterceptor {
 			}
 		}
 		if(jwtCookie.isEmpty()) {
-			return true;
+			response.sendRedirect("/login");
+			return false;
 		}
 		if(!jwtTokenProvider.validateToken(jwtCookie)) {
 			throw new IllegalArgumentException("유효하지 않은 토큰");
