@@ -13,4 +13,10 @@
 }
 .page_number{
 	padding: 0 6px;
+	margin: 0 1px;
+	border: solid 0.5px hsl(200, 40%, 20%);
+}
+.page_number:hover{
+	background-color: hsl(200, 40%, 20%);
+	opacity: 80%;
 }
