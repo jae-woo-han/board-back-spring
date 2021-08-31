@@ -24,7 +24,7 @@ nav{
 	width: 100%;
 }
 article{
-	width: 40vw;
+	width: 35vw;
 	background-color: hsl(0, 0%, 90%);
 }
 aside{
@@ -33,12 +33,19 @@ aside{
 }
 table{
 	width:100%;
+	padding: 5px;
+	border-collapse: collapse;
+}
+th, td{
+	border-bottom: 0.5px solid hsl(0, 0%, 50%); 
+	padding: 5px;
 }
 .td_seq{
 	text-align: center;
 }
 .td_title{
 	width:70%;
+	padding-left: 10px;
 }
 .td_writer{
 	width:15%;
