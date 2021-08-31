@@ -40,8 +40,9 @@
 					<a class="not_underline" th:href="@{/?page={page} (page=${page})}" th:text="${page}"></a>
 				</div>
 			</div>
-			<div>
-			<a class="button" href="/posts/new">등록</a>
+			<div class="page_buttons">
+			<a class="button" href="/posts/new">검색</a>
+			<a class="button" href="/posts/new">글쓰기</a>
 			</div>
 		</article>
 		<aside th:replace="fragments/aside :: aside"/>
