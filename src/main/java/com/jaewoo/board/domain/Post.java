@@ -31,6 +31,7 @@ public class Post {
 	@Column(name = "post_id")
 	private Long id;
 	private String title;
+	@Column(length = 3000)
 	private String content;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
