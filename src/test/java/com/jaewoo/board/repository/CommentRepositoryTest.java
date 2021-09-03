@@ -51,7 +51,20 @@ class CommentRepositoryTest {
 	@Test
 	void 댓글등록() {
 		Comment comment = Comment.builder()
-					.content("댓댓구")
+					.content("Manual testing is not what it was five years ago.\r\n"
+							+ "\r\n"
+							+ "The number of pure manual testing jobs is low and when such a job is available, the competition is fierce. It is common these days to meet manual testers that have a difficult time finding a new job.\r\n"
+							+ "\r\n"
+							+ "Due to budget restrictions for the testing team, there are also cases where manual testers are let go, but test automation engineers retained.\r\n"
+							+ "\r\n"
+							+ "Which doesn't make sense since developers are not great testers.\r\n"
+							+ "On the other hand, it is easier for developers to learn testing than it is for testers to learn development.\r\n"
+							+ "\r\n"
+							+ "Considering the market situation, many manual testers are now becoming more interested in test automation.\r\n"
+							+ "\r\n"
+							+ "Some want to just expand their skills by including programming and a test automation framework in their testing toolbox. Others are contemplating switching the direction completely and focusing on automation only.\r\n"
+							+ "\r\n"
+							+ "But how can you find that next automation job when you do not know programming?")
 					.post(post)
 					.user(user)
 					.createDate(LocalDateTime.now())
