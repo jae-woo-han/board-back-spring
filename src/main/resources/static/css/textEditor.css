@@ -1,3 +1,10 @@
 .ck-editor__editable{
-	height: 50vh;
+	height: 8em; 
+}
+.comment_container{
+	height: 25vh;
+	margin-top: 1rem;
+	border-radius: 5px;
+	border: solid 0.5px hsl(0, 0%, 50%);
+	padding: 10px 15px;
 }
