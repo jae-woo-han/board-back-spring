@@ -67,4 +67,13 @@ public class UserController {
 		model.addAttribute("user", responseDto);
 		return "redirect:/";
 	}
+	
+	@GetMapping("/logout")
+	public String logout(HttpServletResponse response) {
+		
+		Cookie jwtCookie = new Cookie("Authorization", null);
+		response.addCookie(jwtCookie);
+		
+		return "redirect:/";		
+	}
 }
