@@ -43,6 +43,6 @@ public class CommentController {
 		
 		commentRepository.save(comment);
 		
-		return "redirect:/";
+		return "redirect:/posts/"+form.getPostId().toString();
 	}
 }
