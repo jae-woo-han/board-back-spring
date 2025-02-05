@@ -12,9 +12,16 @@
 - 게시글, 댓글의 등록/수정/삭제는 회원 및 관리자만 가능하도록 구축
 
 ## API 구축
-- GET /api/boards/{게시판 id}: 게시판에 속한 게시글 조회
-- GET /api/posts/{post id}: 게시글 조회
-- GET /api/comments/{post id}: 게시글에 속한 댓글 조회
-- POST /api/posts: 게시글 등록
-- POST /api/comments: 댓글 등록
+- 게시판: boards
+  - GET /api/boards/{게시판 id}/posts: 게시판에 속한 게시글 조회
+- 게시글: posts
+  - GET /api/posts/{post id}: 게시글 조회
+  - POST /api/posts: 게시글 등록
+  - PUT /api/posts/{post id}: 게시글 수정
+  - DELETE /api/posts/{post id}: 게시글 삭제
+- 댓글: comments
+  - GET /api/comments/{post id}/comments: 게시글에 속한 댓글 조회
+  - POST /api/comments: 댓글 등록
+  - PUT /api/comments/{comment id}: 댓글 수정
+  - DELETE /api/comments/{comment id}: 댓글 삭제
 
