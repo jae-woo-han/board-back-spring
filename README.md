@@ -24,4 +24,6 @@
   - POST /api/comments: 댓글 등록
   - PUT /api/comments/{comment id}: 댓글 수정
   - DELETE /api/comments/{comment id}: 댓글 삭제
+- 회원: users
+  - 가입, 로그인, 회원정보 조회
 
